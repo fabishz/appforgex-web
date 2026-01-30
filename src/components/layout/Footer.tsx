@@ -38,8 +38,8 @@ export const Footer = () => {
       <div className="container-custom section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="relative w-56 h-14">
+            <Link href="/" className="flex items-center gap-2 mb-6 group">
+              <div className="relative w-64 h-16 md:w-72 md:h-20 transition-transform duration-300 group-hover:scale-105">
                 <img
                   src="/appforgex-logo.png"
                   alt="AppforgeX Logo"
@@ -61,7 +61,7 @@ export const Footer = () => {
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="w-5 h-5" />
-                <span>San Francisco, CA</span>
+                <span>Kigali, Rwanda</span>
               </div>
             </div>
           </div>

@@ -45,10 +45,10 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-64 h-16 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative w-48 h-12 md:w-72 md:h-20 transition-transform duration-300 group-hover:scale-105">
               <img
                 src="/appforgex-logo.png"
                 alt="AppforgeX Logo"
