@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -11,6 +12,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { UserMenu } from '@/components/auth/UserMenu';
+import { getSession } from 'next-auth/react';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -26,9 +29,18 @@ const navLinks = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
+
+  useEffect(() => {
+    getSession().then((session) => {
+      if (session?.user) {
+        setUser(session.user);
+      }
+    });
+  }, [pathname]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
@@ -77,8 +89,9 @@ export const Navbar = () => {
             </DropdownMenu>
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button & User Menu */}
           <div className="hidden md:flex items-center gap-4">
+            <UserMenu user={user} />
             <Link href="/contact">
               <Button className="glow-effect hover:glow-effect-strong transition-all duration-300">
                 Get a Quote
@@ -87,13 +100,16 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center gap-4 lg:hidden">
+            <UserMenu user={user} />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-lg hover:bg-secondary transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

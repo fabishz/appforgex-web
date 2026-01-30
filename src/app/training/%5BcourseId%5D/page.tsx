@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CoursePlayer } from '@/components/training/CoursePlayer';
 
-export default function CourseDetailPage({ params }: { params: { courseId: string } }) {
+export default async function CourseDetailPage(props: { params: Promise<{ courseId: string }> }) {
+    const params = await props.params;
     const course = getCourse(params.courseId);
 
     if (!course) {

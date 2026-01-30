@@ -48,6 +48,7 @@ export const courses: Course[] = [
                 lessons: [
                     { id: 'l1', title: 'How the Internet Works', duration: '10 min', type: 'video', completed: true },
                     { id: 'l2', title: 'HTML & CSS Basics', duration: '45 min', type: 'video', completed: true },
+                    { id: 'l2b', title: 'First Project: Personal Site', duration: '60 min', type: 'article', completed: true },
                 ]
             },
             {
@@ -56,6 +57,15 @@ export const courses: Course[] = [
                 lessons: [
                     { id: 'l3', title: 'Components & Props', duration: '30 min', type: 'video', completed: false },
                     { id: 'l4', title: 'State & Effects', duration: '40 min', type: 'video', completed: false },
+                    { id: 'l5', title: 'React Quiz', duration: '15 min', type: 'quiz', completed: false },
+                ]
+            },
+            {
+                id: 'm3',
+                title: 'Backend Basics',
+                lessons: [
+                    { id: 'l6', title: 'Node.js Setup', duration: '20 min', type: 'video' },
+                    { id: 'l7', title: 'Express Server', duration: '50 min', type: 'video' },
                 ]
             }
         ]
@@ -73,10 +83,19 @@ export const courses: Course[] = [
         enrolled: true,
         modules: [
             {
-                id: 'm1',
+                id: 'mm1',
                 title: 'Setup & Configuration',
                 lessons: [
-                    { id: 'l1', title: 'React Native CLI vs Expo', duration: '15 min', type: 'article', completed: true },
+                    { id: 'mml1', title: 'React Native CLI vs Expo', duration: '15 min', type: 'article', completed: true },
+                    { id: 'mml2', title: 'Environment Setup', duration: '30 min', type: 'video' },
+                ]
+            },
+            {
+                id: 'mm2',
+                title: 'Core Components',
+                lessons: [
+                    { id: 'mml3', title: 'View, Text, Image', duration: '25 min', type: 'video' },
+                    { id: 'mml4', title: 'Flexbox for Mobile', duration: '40 min', type: 'video' },
                 ]
             }
         ]
@@ -91,7 +110,23 @@ export const courses: Course[] = [
         image: 'bg-gradient-to-br from-orange-500/10 to-red-500/10',
         icon: Server,
         enrolled: false,
-        modules: []
+        modules: [
+            {
+                id: 'doc1',
+                title: 'Containerization',
+                lessons: [
+                    { id: 'docl1', title: 'Docker Basics', duration: '30 min', type: 'video' },
+                    { id: 'docl2', title: 'Writing Dockerfiles', duration: '45 min', type: 'video' },
+                ]
+            },
+            {
+                id: 'doc2',
+                title: 'Orchestration',
+                lessons: [
+                    { id: 'docl3', title: 'Intro to Kubernetes', duration: '60 min', type: 'video' },
+                ]
+            }
+        ]
     },
     {
         id: 'ai-ml',
@@ -103,7 +138,24 @@ export const courses: Course[] = [
         image: 'bg-gradient-to-br from-purple-500/10 to-pink-500/10',
         icon: Brain,
         enrolled: false,
-        modules: []
+        modules: [
+            {
+                id: 'aiml1',
+                title: 'Python for Data Science',
+                lessons: [
+                    { id: 'ail1', title: 'NumPy & Pandas', duration: '50 min', type: 'video' },
+                    { id: 'ail2', title: 'Data Visualization', duration: '40 min', type: 'video' },
+                ]
+            },
+            {
+                id: 'aiml2',
+                title: 'Neural Networks',
+                lessons: [
+                    { id: 'ail3', title: 'Perceptrons', duration: '30 min', type: 'video' },
+                    { id: 'ail4', title: 'Backpropagation', duration: '60 min', type: 'video' },
+                ]
+            }
+        ]
     },
     {
         id: 'cybersecurity',
@@ -115,7 +167,16 @@ export const courses: Course[] = [
         image: 'bg-gradient-to-br from-slate-500/10 to-gray-500/10',
         icon: Shield,
         enrolled: false,
-        modules: []
+        modules: [
+            {
+                id: 'cyb1',
+                title: 'Threat Landscape',
+                lessons: [
+                    { id: 'cyle1', title: 'Common Vectors', duration: '25 min', type: 'video' },
+                    { id: 'cyle2', title: 'Social Engineering', duration: '35 min', type: 'video' },
+                ]
+            }
+        ]
     },
     {
         id: 'db-design',
@@ -127,7 +188,22 @@ export const courses: Course[] = [
         image: 'bg-gradient-to-br from-yellow-500/10 to-amber-500/10',
         icon: Database,
         enrolled: false,
-        modules: []
+        modules: [
+            {
+                id: 'db1',
+                title: 'Normalization',
+                lessons: [
+                    { id: 'dble1', title: '1NF, 2NF, 3NF', duration: '40 min', type: 'video' },
+                ]
+            },
+            {
+                id: 'db2',
+                title: 'Indexing Strategies',
+                lessons: [
+                    { id: 'dble2', title: 'B-Trees vs Hash', duration: '30 min', type: 'video' },
+                ]
+            }
+        ]
     }
 ];
 
