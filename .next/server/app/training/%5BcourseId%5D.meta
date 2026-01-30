@@ -3,6 +3,6 @@
   "headers": {
     "x-nextjs-stale-time": "4294967294",
     "x-nextjs-prerender": "1",
-    "x-next-cache-tags": "_N_T_/layout,_N_T_/training/layout,_N_T_/training/%5BcourseId%5D/layout,_N_T_/training/%5BcourseId%5D/page,_N_T_/training/%5BcourseId%5D"
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(dashboard)/layout,_N_T_/(dashboard)/training/layout,_N_T_/(dashboard)/training/%5BcourseId%5D/layout,_N_T_/(dashboard)/training/%5BcourseId%5D/page,_N_T_/training/%5BcourseId%5D"
   }
 }
