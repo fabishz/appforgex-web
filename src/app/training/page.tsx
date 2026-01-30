@@ -1,130 +1,89 @@
+'use client';
 
-import { GraduationCap, BookOpen, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { courses } from '@/lib/training-data';
+import { CourseCard } from '@/components/training/CourseCard';
+import { DashboardHeader } from '@/components/training/DashboardHeader';
+import { Search, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 
-export default function TrainingPage() {
-    const courses = [
-        {
-            title: 'Full Stack Development',
-            duration: '12 Weeks',
-            level: 'Beginner to Advanced',
-            topics: ['React', 'Node.js', 'PostgreSQL', 'Next.js'],
-            description: 'Master the art of building modern web applications from scratch.',
-        },
-        {
-            title: 'Mobile App Mastery',
-            duration: '10 Weeks',
-            level: 'Intermediate',
-            topics: ['React Native', 'iOS', 'Android', 'Deployment'],
-            description: 'Learn to build cross-platform mobile apps that perform like native.',
-        },
-        {
-            title: 'DevOps & Cloud Engineering',
-            duration: '8 Weeks',
-            level: 'Advanced',
-            topics: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
-            description: 'Become a master of infrastructure automation and cloud scalability.',
-        },
-        {
-            title: 'AI & Machine Learning',
-            duration: '14 Weeks',
-            level: 'Intermediate',
-            topics: ['Python', 'TensorFlow', 'LLMs', 'Data Science'],
-            description: 'Dive into the future with practical AI and ML implementation skills.',
-        },
-    ];
+export default function TrainingDashboard() {
+    const [activeFilter, setActiveFilter] = useState<'All' | 'Beginner' | 'Intermediate' | 'Advanced'>('All');
+
+    const enrolledCourses = courses.filter(c => c.enrolled);
+    const allCourses = courses;
+
+    const filteredCourses = activeFilter === 'All'
+        ? allCourses
+        : allCourses.filter(c => c.level === activeFilter);
 
     return (
         <>
-            <section className="section-padding hero-gradient">
+            <section className="section-padding pt-24 min-h-screen">
                 <div className="container-custom">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 mb-6 animate-fade-in-up opacity-0">
-                            AppforgeX Academy
-                        </span>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-fade-in-up opacity-0 stagger-1">
-                            Upgrade Your <span className="gradient-text">Skills</span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-muted-foreground animate-fade-in-up opacity-0 stagger-2 mb-8">
-                            Industry-standard training programs designed to launch and accelerate your tech career.
-                        </p>
-                    </div>
-                </div>
-            </section>
+                    {/* Dashboard Header */}
+                    <DashboardHeader />
 
-            <section className="section-padding">
-                <div className="container-custom">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                        {courses.map((course, index) => (
-                            <div key={index} className="flex flex-col p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 group">
-                                <div className="flex items-start justify-between mb-6">
-                                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                        <BookOpen className="w-6 h-6" />
+                    {/* My Learning Section */}
+                    {enrolledCourses.length > 0 && (
+                        <div className="mb-16">
+                            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                                My Learning
+                                <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                                    {enrolledCourses.length}
+                                </span>
+                            </h2>
+                            <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+                                {enrolledCourses.map(course => (
+                                    <div key={course.id} className="min-w-[300px] md:min-w-[350px]">
+                                        <CourseCard course={course} compact />
                                     </div>
-                                    <span className="px-3 py-1 rounded-full bg-secondary text-xs font-medium border border-border">
-                                        {course.level}
-                                    </span>
-                                </div>
-                                <h3 className="text-2xl font-bold mb-3">{course.title}</h3>
-                                <p className="text-muted-foreground mb-6 flex-grow">{course.description}</p>
-                                <div className="space-y-4 mb-8">
-                                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                        <Clock className="w-4 h-4" />
-                                        <span>{course.duration}</span>
-                                    </div>
-                                    <div className="flex flex-wrap gap-2">
-                                        {course.topics.map((topic) => (
-                                            <span key={topic} className="px-2 py-1 rounded bg-secondary/50 text-xs border border-border">
-                                                {topic}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <Link href="/contact" className="mt-auto">
-                                    <Button className="w-full group-hover:translate-x-1 transition-transform">
-                                        Enroll Now <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="section-padding bg-secondary/20">
-                <div className="container-custom">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Train With Us?</h2>
-                            <ul className="space-y-4">
-                                {[
-                                    'Expert Instructors from Top Tech Companies',
-                                    'Hands-on Project Based Learning',
-                                    'Career Support and Mentorship',
-                                    'Lifetime Access to Course Materials',
-                                    'Certification upon Completion',
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3">
-                                        <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                                        <span className="text-lg">{item}</span>
-                                    </li>
                                 ))}
-                            </ul>
-                            <Button size="lg" className="mt-8 glow-effect">
-                                Get Syllabus
-                            </Button>
-                        </div>
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-600 rounded-3xl blur-3xl opacity-20" />
-                            <div className="relative p-8 rounded-3xl bg-card border border-border">
-                                <GraduationCap className="w-24 h-24 text-primary mx-auto mb-6" />
-                                <div className="text-center">
-                                    <div className="text-5xl font-bold mb-2">1000+</div>
-                                    <div className="text-xl text-muted-foreground">Graduates Placed</div>
-                                </div>
                             </div>
                         </div>
+                    )}
+
+                    {/* Browse All Courses */}
+                    <div>
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                            <div>
+                                <h2 className="text-2xl font-bold">Browse Catalog</h2>
+                                <p className="text-muted-foreground">Expand your skills with our professional tracks.</p>
+                            </div>
+
+                            {/* Filter Tabs */}
+                            <div className="flex flex-wrap gap-2 p-1 rounded-xl bg-secondary/50 border border-border">
+                                {(['All', 'Beginner', 'Intermediate', 'Advanced'] as const).map((filter) => (
+                                    <button
+                                        key={filter}
+                                        onClick={() => setActiveFilter(filter)}
+                                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeFilter === filter
+                                                ? 'bg-background shadow-sm text-foreground'
+                                                : 'text-muted-foreground hover:text-foreground hover:bg-background/50'
+                                            }`}
+                                    >
+                                        {filter}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {filteredCourses.map(course => (
+                                <CourseCard key={course.id} course={course} />
+                            ))}
+                        </div>
+
+                        {filteredCourses.length === 0 && (
+                            <div className="text-center py-20 bg-secondary/20 rounded-2xl border border-dashed border-border">
+                                <Search className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                                <h3 className="text-xl font-bold mb-2">No courses found</h3>
+                                <p className="text-muted-foreground mb-6">Try adjusting your filters to see more results.</p>
+                                <Button onClick={() => setActiveFilter('All')} variant="outline">
+                                    Clear Filters
+                                </Button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>
