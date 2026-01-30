@@ -1,17 +1,17 @@
 {
   "node": {
-    "606b534767415e0a9446b614f7f9f9465413257ea9": {
+    "601eb828792aabf78af623311b311fc89eac4a33ee": {
       "workers": {
-        "app/login/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Ffabrice%2FDownloads%2Fappforgex%2Fappforgex-digital-showcase-main%2Fsrc%2Flib%2Factions.ts%22%2C%5B%5B%22606b534767415e0a9446b614f7f9f9465413257ea9%22%2C%22authenticate%22%5D%5D%5D%5D&__client_imported__=true!",
+        "app/(marketing)/login/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Ffabrice%2FDownloads%2Fappforgex%2Fappforgex-digital-showcase-main%2Fsrc%2Flib%2Factions.ts%22%2C%5B%5B%22601eb828792aabf78af623311b311fc89eac4a33ee%22%2C%22authenticate%22%5D%5D%5D%5D&__client_imported__=true!",
           "async": false
         }
       },
       "layer": {
-        "app/login/page": "action-browser"
+        "app/(marketing)/login/page": "action-browser"
       }
     }
   },
   "edge": {},
-  "encryptionKey": "A5AQ9fQCf8CJR6i54md4NYhYQQHEyRjmmn/FhUa7NYI="
+  "encryptionKey": "OzSA/xZ90kAZrBnCNT8ktZStTJcxOGBM1pv+WqnYrx8="
 }

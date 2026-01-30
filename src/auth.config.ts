@@ -9,8 +9,14 @@ export const authConfig = {
         authorized({ auth, request: { nextUrl } }) {
             const isLoggedIn = !!auth?.user;
             const isOnTraining = nextUrl.pathname.startsWith('/training');
+            const isOnAdmin = nextUrl.pathname.startsWith('/admin');
             const isOnLogin = nextUrl.pathname.startsWith('/login');
             const isOnRegister = nextUrl.pathname.startsWith('/register');
+
+            if (isOnAdmin) {
+                if (isLoggedIn && auth?.user?.role === 'admin') return true;
+                return Response.redirect(new URL('/training', nextUrl)); // Redirect non-admins to training
+            }
 
             if (isOnTraining) {
                 if (isLoggedIn) return true;
